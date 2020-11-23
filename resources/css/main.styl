@@ -1,0 +1,99 @@
+$dropdown-bg-color = lightgray
+$dropdown-bg-color-dark = darkgray
+$separator-color = gray
+$item-padding = .25em
+$item-padding-double = .5em
+
+context-menu
+    display none
+
+.context-menu
+    position: relative
+
+    &__toggler
+        cursor: pointer
+
+        &-default svg
+            vertical-align: baseline
+            height: .75em
+
+    &__dropdown
+        transform-origin: top center
+        background-color: $dropdown-bg-color
+        absolute top 100% left 0
+        width: 150px
+        max-width: 100%
+        
+        &.is-top-side
+            transform-origin: bottom center
+
+    &__list
+        list-style: none
+        padding-left: 0
+        margin: 0
+
+
+/*
+ * Position modifiers
+ */
+    &.is-right-side
+        .context-menu__dropdown
+            right: 0
+            left: auto
+
+    &.is-top-side
+        .context-menu__dropdown
+            bottom: 100%
+            top: auto
+
+
+/*
+ * Animation classes
+ */
+.toggle-context-menu
+
+    &-enter-active,
+    &-leave-active
+        will-change: transform, opacity
+        pointer-events: none
+        transform: translate3d(0,0,0)
+
+    &-enter-active
+        transition: opacity 250ms ease-out, transform 180ms ease-out
+
+    &-leave-active
+        transition: opacity 120ms ease, transform 140ms ease
+
+    &-enter,
+    &-leave-to
+        opacity: 0
+        transform: scaleY(.9)
+
+    &-enter-to,
+    &-leave
+        opacity: 1
+        transform: scaleY(1)
+
+
+/*
+ * Item
+ */
+.cm-item
+
+    &.is-separator
+        height: 1px
+        overflow: hidden
+        color: transparent
+        background-color: $separator-color
+
+    &__link,
+    &__button
+        padding: $item-padding $item-padding-double
+        width: 100%
+        display: block
+
+    &__panel
+        padding: $item-padding-double $item-padding-double
+
+        &.is-secondary
+            background-color: $dropdown-bg-color-dark

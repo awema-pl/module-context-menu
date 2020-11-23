@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Context menu example</title>
+
+    <!-- config -->
+    <script>
+        AWEMA_CONFIG = {
+            key: '3d25192e1ea162e3b69697e70256dd77',
+            dev: true
+        }
+    </script>
+
+    <!-- context-menu plugin -->
+    <link rel="stylesheet" href="css/main.css">
+    <script src="js/main.js"></script>
+
+    <!-- core -->
+    <script src="https://s0.awema.pl/3d25192e1ea162e3b69697e70256dd77/awema-pl/base-js/v1.x.x/js/main.js"></script>
+</head>
+<body style="padding: 350px 0;">
+    <content-wrapper>
+        <context-menu>
+            <cm-button>Button</cm-button>
+            <cm-link href="https://google.com">Link</cm-link>
+            <cm-separator></cm-separator>
+            <cm-panel>
+                A panel
+            </cm-panel>
+            <cm-panel secondary>
+                A secondary panel
+            </cm-panel>
+            <cm-ajax url="https://httpbin.org/post" :params="{test: 'Test'}">Request</cm-ajax>
+            <cm-query :param="{'query-param': 'value'}">
+                Query
+            </cm-query>
+            <cm-query :param="{'query-param': 'another-value'}">Query 2</cm-query>
+        </context-menu>
+    </content-wrapper>
+</body>
+</html>
